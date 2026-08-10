@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Shivankur Ghosh — Senior Brand Manager, Growth & Marketing Strategist." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <title>Shivankur Ghosh — Brand, Growth & Marketing</title>
+
+  <style>
+    /* =========================================================
+       SHIVANKUR GHOSH — SINGLE-FILE PORTFOLIO
+       Replace the portrait placeholder and project links as needed.
+       ========================================================= */
+
+    :root{
+      --bg:#080808;
+      --surface:#111111;
+      --surface-2:#171717;
+      --text:#f4f1e9;
+      --muted:#9c9a94;
+      --line:#292929;
+      --accent:#d9ff3f;
+      --accent-2:#ffffff;
+      --max:1240px;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --display: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:var(--sans);
+      line-height:1.45;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    ::selection{
+      background:var(--accent);
+      color:#000;
+    }
+
+    .container{
+      width:min(calc(100% - 48px), var(--max));
+      margin:auto;
+    }
+
+    /* NAV */
+    nav{
+      position:fixed;
+      inset:0 0 auto;
+      z-index:100;
+      background:rgba(8,8,8,.78);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner{
+      height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .mark{
+      font-weight:900;
+      letter-spacing:-.06em;
+      font-size:1.05rem;
+    }
+    .mark span{color:var(--accent)}
+    .nav-links{
+      display:flex;
+      gap:28px;
+      align-items:center;
+      font-size:.82rem;
+      color:#c8c6c0;
+    }
+    .nav-links a{transition:.2s}
+    .nav-links a:hover{color:var(--accent)}
+    .nav-cta{
+      border:1px solid #444;
+      padding:10px 16px;
+      border-radius:999px;
+    }
+    .nav-cta:hover{
+      border-color:var(--accent);
+      color:var(--accent)!important;
+    }
+
+    /* HERO */
+    .hero{
+      min-height:100vh;
+      padding:160px 0 90px;
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      gap:70px;
+      align-items:end;
+      position:relative;
+    }
+    .hero:before{
+      content:"";
+      position:absolute;
+      width:520px;
+      height:520px;
+      right:-180px;
+      top:120px;
+      background:radial-gradient(circle,rgba(217,255,63,.10),transparent 67%);
+      pointer-events:none;
+    }
+    .eyebrow{
+      color:var(--accent);
+      font-size:.74rem;
+      text-transform:uppercase;
+      letter-spacing:.22em;
+      font-weight:800;
+      margin-bottom:24px;
+    }
+    h1{
+      font-family:var(--display);
+      font-size:clamp(4.8rem,10.5vw,10.5rem);
+      line-height:.78;
+      letter-spacing:-.045em;
+      text-transform:uppercase;
+      margin:0;
+      max-width:900px;
+    }
+    h1 em{
+      color:var(--accent);
+      font-style:normal;
+    }
+    .hero-copy{
+      margin-top:38px;
+      max-width:690px;
+      color:#bbb9b2;
+      font-size:1.08rem;
+      line-height:1.7;
+    }
+    .hero-side{
+      border-top:1px solid var(--line);
+      padding-top:18px;
+      color:var(--muted);
+      font-size:.88rem;
+    }
+    .hero-side strong{
+      display:block;
+      color:var(--text);
+      font-size:1rem;
+      margin-bottom:10px;
+    }
+    .scroll-note{
+      margin-top:65px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#777;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-size:.66rem;
+    }
+    .scroll-note:before{
+      content:"";
+      width:38px;
+      height:1px;
+      background:var(--accent);
+    }
+
+    /* MARQUEE */
+    .ticker{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+      white-space:nowrap;
+    }
+    .ticker-track{
+      display:inline-flex;
+      gap:34px;
+      padding:18px 0;
+      animation:marquee 25s linear infinite;
+      font-family:var(--display);
+      font-size:1.05rem;
+      letter-spacing:.02em;
+      text-transform:uppercase;
+    }
+    .ticker-track span{color:var(--accent)}
+    @keyframes marquee{
+      from{transform:translateX(0)}
+      to{transform:translateX(-50%)}
+    }
+
+    /* GENERAL */
+    section{padding:120px 0}
+    .section-head{
+      display:grid;
+      grid-template-columns:220px 1fr;
+      gap:40px;
+      margin-bottom:60px;
+    }
+    .section-label{
+      color:var(--accent);
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-size:.7rem;
+      font-weight:800;
+      padding-top:8px;
+    }
+    h2{
+      font-family:var(--display);
+      text-transform:uppercase;
+      font-size:clamp(3rem,6vw,6.5rem);
+      line-height:.86;
+      letter-spacing:-.04em;
+      margin:0;
+    }
+    .intro{
+      max-width:720px;
+      margin:26px 0 0;
+      color:var(--muted);
+      font-size:1.03rem;
+      line-height:1.75;
+    }
+
+    /* IMPACT */
+    .impact-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      border-top:1px solid var(--line);
+      border-left:1px solid var(--line);
+    }
+    .impact{
+      min-height:220px;
+      padding:28px;
+      border-right:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .impact-number{
+      font-family:var(--display);
+      font-size:clamp(2.8rem,5vw,5.5rem);
+      line-height:.9;
+      letter-spacing:-.04em;
+    }
+    .impact-label{
+      color:var(--muted);
+      font-size:.82rem;
+      max-width:190px;
+    }
+
+    /* CAPABILITIES */
+    .capabilities{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:1px;
+      background:var(--line);
+      border:1px solid var(--line);
+    }
+    .cap{
+      background:var(--bg);
+      padding:34px;
+      min-height:210px;
+    }
+    .cap-no{
+      color:#666;
+      font-size:.7rem;
+      letter-spacing:.16em;
+    }
+    .cap h3{
+      font-family:var(--display);
+      text-transform:uppercase;
+      font-size:2.1rem;
+      line-height:.9;
+      margin:35px 0 15px;
+    }
+    .cap p{color:var(--muted);max-width:460px}
+
+    /* WORK */
+    .work-list{border-top:1px solid var(--line)}
+    .project{
+      display:grid;
+      grid-template-columns:130px 1fr 300px;
+      gap:36px;
+      padding:38px 0;
+      border-bottom:1px solid var(--line);
+      align-items:start;
+      transition:.25s;
+    }
+    .project:hover{padding-left:12px}
+    .project-index{
+      color:#555;
+      font-size:.75rem;
+      letter-spacing:.15em;
+    }
+    .project h3{
+      margin:0 0 12px;
+      font-family:var(--display);
+      text-transform:uppercase;
+      font-size:2.4rem;
+      line-height:.9;
+      letter-spacing:-.02em;
+    }
+    .project p{
+      color:var(--muted);
+      max-width:650px;
+      margin:0;
+    }
+    .project-meta{
+      color:#8e8d87;
+      font-size:.76rem;
+      line-height:1.8;
+      text-align:right;
+    }
+    .project-meta b{color:var(--accent);font-weight:700}
+
+    /* CASE STUDY */
+    .case{
+      margin-top:60px;
+      background:var(--surface);
+      border:1px solid var(--line);
+      padding:50px;
+    }
+    .case-top{
+      display:flex;
+      justify-content:space-between;
+      gap:30px;
+      align-items:flex-start;
+    }
+    .case h3{
+      font-family:var(--display);
+      text-transform:uppercase;
+      font-size:3.4rem;
+      line-height:.86;
+      margin:0;
+      max-width:650px;
+    }
+    .case-tag{
+      color:#000;
+      background:var(--accent);
+      padding:8px 12px;
+      font-size:.68rem;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      white-space:nowrap;
+    }
+    .case-grid{
+      margin-top:42px;
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:1px;
+      background:var(--line);
+    }
+    .case-cell{
+      background:var(--surface);
+      padding:25px;
+      min-height:150px;
+    }
+    .case-cell small{
+      display:block;
+      color:#666;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-size:.63rem;
+      margin-bottom:20px;
+    }
+    .case-cell strong{
+      font-size:1rem;
+      line-height:1.5;
+    }
+
+    /* TIMELINE */
+    .timeline{border-top:1px solid var(--line)}
+    .role{
+      display:grid;
+      grid-template-columns:180px 1fr 160px;
+      gap:30px;
+      padding:32px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .role-date{color:#777;font-size:.8rem}
+    .role h3{margin:0 0 6px;font-size:1.2rem}
+    .role-company{color:var(--accent);font-size:.8rem}
+    .role-right{text-align:right;color:#777;font-size:.76rem}
+
+    /* PRINCIPLES */
+    .principles{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1px;
+      background:var(--line);
+      border:1px solid var(--line);
+    }
+    .principle{
+      background:var(--bg);
+      padding:38px;
+      min-height:250px;
+    }
+    .principle-num{
+      font-family:var(--display);
+      color:var(--accent);
+      font-size:2.5rem;
+    }
+    .principle h3{
+      font-size:1.15rem;
+      margin:35px 0 10px;
+    }
+    .principle p{color:var(--muted);font-size:.9rem}
+
+    /* CONTACT */
+    .contact{
+      min-height:70vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      border-top:1px solid var(--line);
+    }
+    .contact h2{max-width:900px}
+    .contact-line{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      margin-top:55px;
+      gap:30px;
+    }
+    .email{
+      font-size:clamp(1.2rem,3vw,2.5rem);
+      border-bottom:1px solid #555;
+      padding-bottom:8px;
+    }
+    .email:hover{border-color:var(--accent);color:var(--accent)}
+    .socials{
+      display:flex;
+      gap:20px;
+      color:#888;
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+    .socials a:hover{color:var(--accent)}
+
+    footer{
+      padding:30px 0 45px;
+      border-top:1px solid var(--line);
+      color:#555;
+      display:flex;
+      justify-content:space-between;
+      font-size:.7rem;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;gap:45px;padding-top:135px}
+      .hero-side{max-width:520px}
+      .section-head{grid-template-columns:1fr;gap:10px}
+      .impact-grid{grid-template-columns:1fr 1fr}
+      .project{grid-template-columns:70px 1fr}
+      .project-meta{text-align:left;grid-column:2}
+      .case-grid{grid-template-columns:1fr}
+      .principles{grid-template-columns:1fr}
+      .role{grid-template-columns:120px 1fr}
+      .role-right{text-align:left;grid-column:2}
+    }
+
+    @media(max-width:640px){
+      .container{width:min(calc(100% - 28px),var(--max))}
+      .nav-links a:not(.nav-cta){display:none}
+      section{padding:82px 0}
+      h1{font-size:clamp(4rem,21vw,7rem)}
+      .impact-grid{grid-template-columns:1fr}
+      .capabilities{grid-template-columns:1fr}
+      .project{grid-template-columns:1fr;gap:14px}
+      .project-meta{grid-column:auto}
+      .case{padding:28px}
+      .case-top{flex-direction:column}
+      .case h3{font-size:2.7rem}
+      .contact-line{flex-direction:column;align-items:flex-start}
+      footer{flex-direction:column;gap:10px}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .ticker-track{animation:none}
+      *{transition:none!important}
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+      <a class="mark" href="#top">SHIVANKUR<span>.</span></a>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact" class="nav-cta">Let's talk</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <header class="container hero">
+      <div>
+        <div class="eyebrow">Senior Brand Manager · Growth · GTM · Marketing</div>
+        <h1>BUILD<br>BRANDS.<br><em>BUILD</em><br>GROWTH.</h1>
+        <p class="hero-copy">
+          I build marketing systems that connect brand, media, consumer insight
+          and commercial performance — from the first idea to measurable business impact.
+        </p>
+        <div class="scroll-note">Scroll to explore</div>
+      </div>
+
+      <aside class="hero-side">
+        <strong>Shivankur Ghosh</strong>
+        Senior Brand Manager working across brand strategy, full-funnel growth,
+        GTM, partner ecosystems, content operations and revenue-focused marketing.
+        <br><br>
+        Experience across real estate, housing finance, proptech, consumer and
+        integrated marketing.
+      </aside>
+    </header>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        BRAND STRATEGY <span>✦</span> GTM <span>✦</span> MEDIA <span>✦</span>
+        GROWTH <span>✦</span> REVENUE <span>✦</span> PARTNERSHIPS <span>✦</span>
+        BRAND STRATEGY <span>✦</span> GTM <span>✦</span> MEDIA <span>✦</span>
+        GROWTH <span>✦</span> REVENUE <span>✦</span> PARTNERSHIPS <span>✦</span>
+      </div>
+    </div>
+
+    <section id="impact">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">01 / Impact</div>
+          <div>
+            <h2>NUMBERS<br>THAT MATTER.</h2>
+            <p class="intro">
+              Selected outcomes from a career built around turning marketing
+              into a commercial function.
+            </p>
+          </div>
+        </div>
+
+        <div class="impact-grid">
+          <article class="impact">
+            <div class="impact-number">500%+</div>
+            <div class="impact-label">Growth across profitability and marketing-led business outcomes.</div>
+          </article>
+          <article class="impact">
+            <div class="impact-number">80%+</div>
+            <div class="impact-label">Increase in PAN-India brand visibility across online and offline channels.</div>
+          </article>
+          <article class="impact">
+            <div class="impact-number">1,228</div>
+            <div class="impact-label">Landing-page leads generated and tracked through the partner acquisition funnel.</div>
+          </article>
+          <article class="impact">
+            <div class="impact-number">45D→&lt;1H</div>
+            <div class="impact-label">Marketing execution turnaround through workflow and content-operations redesign.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="capabilities">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">02 / Capabilities</div>
+          <div>
+            <h2>WHAT I<br>BUILD.</h2>
+            <p class="intro">
+              I work at the intersection of brand thinking and business thinking.
+              The output isn't simply a campaign — it's a system that can scale.
+            </p>
+          </div>
+        </div>
+
+        <div class="capabilities">
+          <article class="cap">
+            <div class="cap-no">01</div>
+            <h3>Brand &<br>Positioning</h3>
+            <p>Brand architecture, positioning, messaging, storytelling and consistent consumer touchpoints.</p>
+          </article>
+          <article class="cap">
+            <div class="cap-no">02</div>
+            <h3>GTM &<br>Growth</h3>
+            <p>Go-to-market planning, acquisition funnels, partner-led growth and full-funnel marketing strategy.</p>
+          </article>
+          <article class="cap">
+            <div class="cap-no">03</div>
+            <h3>Media &<br>Performance</h3>
+            <p>Media planning, channel allocation, campaign measurement and optimization around commercial outcomes.</p>
+          </article>
+          <article class="cap">
+            <div class="cap-no">04</div>
+            <h3>Marketing<br>Systems</h3>
+            <p>Content workflows, sales enablement, digital resource ecosystems and operating processes built to scale.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">03 / Selected Work</div>
+          <div>
+            <h2>IDEAS INTO<br>IMPACT.</h2>
+            <p class="intro">
+              A selection of work where strategy, creativity and commercial
+              thinking came together.
+            </p>
+          </div>
+        </div>
+
+        <div class="work-list">
+
+          <article class="project">
+            <div class="project-index">01 / 2026</div>
+            <div>
+              <h3>The Great Loan Shark</h3>
+              <p>
+                Conceived a flagship thought-leadership IP for NoBroker Loans —
+                designed to convene India's lending ecosystem through executive
+                conversations, podcast, webinars, short-form content, PR and
+                partner acquisition.
+              </p>
+            </div>
+            <div class="project-meta">
+              <b>STRATEGY</b><br>
+              Thought Leadership<br>
+              Content IP<br>
+              Partner Growth
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-index">02 / 2026</div>
+            <div>
+              <h3>Partner Acquisition Engine</h3>
+              <p>
+                Built and optimized a landing-page-led acquisition funnel,
+                tracking the journey from lead capture through call connection,
+                follow-up, onboarding and partner conversion across organic
+                and paid sources.
+              </p>
+            </div>
+            <div class="project-meta">
+              <b>GROWTH</b><br>
+              1,228 Leads<br>
+              905 Connected<br>
+              198 Onboarded
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-index">03 / 2026</div>
+            <div>
+              <h3>Digital Partner Catalogue</h3>
+              <p>
+                Created a real-time digital resource ecosystem for thousands of
+                loan partners, centralizing marketing and sales collateral into
+                a faster, scalable enablement workflow.
+              </p>
+            </div>
+            <div class="project-meta">
+              <b>ENABLEMENT</b><br>
+              Real-time Resources<br>
+              Partner Ecosystem<br>
+              Workflow Design
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-index">04 / 2025</div>
+            <div>
+              <h3>NB Heroes</h3>
+              <p>
+                Led a PAN-India BTL campaign celebrating the success of the
+                NoBroker Loans partner ecosystem, translating partner stories
+                into an on-ground brand platform.
+              </p>
+            </div>
+            <div class="project-meta">
+              <b>BRAND</b><br>
+              PAN-India BTL<br>
+              Partner Marketing<br>
+              Brand Storytelling
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-index">05 / 2024</div>
+            <div>
+              <h3>Elements Mall</h3>
+              <p>
+                Built a 90-day integrated marketing intervention across OOH,
+                print, radio, digital and on-ground experiences to drive footfall,
+                spending and utilization of underused retail space.
+              </p>
+            </div>
+            <div class="project-meta">
+              <b>INTEGRATED</b><br>
+              Brand Growth<br>
+              Retail Marketing<br>
+              Experiential
+            </div>
+          </article>
+
+        </div>
+
+        <div class="case">
+          <div class="case-top">
+            <h3>THE GREAT<br><span style="color:var(--accent)">LOAN SHARK</span><br>PLAYBOOK</h3>
+            <div class="case-tag">Thought Leadership IP</div>
+          </div>
+
+          <div class="case-grid">
+            <div class="case-cell">
+              <small>The Idea</small>
+              <strong>Build an annual platform that brings India's lending leaders together.</strong>
+            </div>
+            <div class="case-cell">
+              <small>The Engine</small>
+              <strong>Executive conversation → podcast → short-form → LinkedIn → PR → partner acquisition.</strong>
+            </div>
+            <div class="case-cell">
+              <small>The Ambition</small>
+              <strong>Turn one conversation into a durable brand, partner and business asset.</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">04 / Experience</div>
+          <div>
+            <h2>THE<br>JOURNEY.</h2>
+            <p class="intro">
+              A cross-functional path through marketing, product, consulting,
+              real estate and housing finance.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="role">
+            <div class="role-date">APR 2025 — PRESENT</div>
+            <div>
+              <h3>Senior Brand Manager</h3>
+              <div class="role-company">NoBroker Loans · Bengaluru</div>
+            </div>
+            <div class="role-right">Brand · GTM · Growth</div>
+          </article>
+
+          <article class="role">
+            <div class="role-date">2023 — 2025</div>
+            <div>
+              <h3>Brand & Marketing</h3>
+              <div class="role-company">Consulting & Integrated Marketing</div>
+            </div>
+            <div class="role-right">Strategy · Campaigns</div>
+          </article>
+
+          <article class="role">
+            <div class="role-date">2023</div>
+            <div>
+              <h3>Management Trainee</h3>
+              <div class="role-company">Aditya Birla Capital</div>
+            </div>
+            <div class="role-right">BFSI · Business</div>
+          </article>
+
+          <article class="role">
+            <div class="role-date">2021</div>
+            <div>
+              <h3>Campaign Manager</h3>
+              <div class="role-company">GetMyUni</div>
+            </div>
+            <div class="role-right">Growth · Campaigns</div>
+          </article>
+
+          <article class="role">
+            <div class="role-date">2019 — 2021</div>
+            <div>
+              <h3>Product Marketing Manager</h3>
+              <div class="role-company">EmptyCup</div>
+            </div>
+            <div class="role-right">Product · GTM</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="thinking">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">05 / Point of View</div>
+          <div>
+            <h2>HOW I<br>THINK.</h2>
+            <p class="intro">
+              Three principles I bring into every marketing problem.
+            </p>
+          </div>
+        </div>
+
+        <div class="principles">
+          <article class="principle">
+            <div class="principle-num">01</div>
+            <h3>Brand is a business asset.</h3>
+            <p>Build recognition and trust, but never lose sight of the commercial reason the brand exists.</p>
+          </article>
+          <article class="principle">
+            <div class="principle-num">02</div>
+            <h3>Systems beat heroics.</h3>
+            <p>A great campaign is useful once. A great workflow makes the next hundred campaigns better.</p>
+          </article>
+          <article class="principle">
+            <div class="principle-num">03</div>
+            <h3>Measure what matters.</h3>
+            <p>Reach is useful. Engagement is useful. But the real conversation is revenue, efficiency and profit.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="container contact">
+      <div class="eyebrow">06 / Contact</div>
+      <h2>LET'S BUILD<br><em style="color:var(--accent);font-style:normal">SOMETHING</em><br>WORTH REMEMBERING.</h2>
+
+      <div class="contact-line">
+        <!-- Replace with your preferred public email / links -->
+        <a class="email" href="mailto:shivankur.work@gmail.com">shivankur.work@gmail.com</a>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/shivankurghosh/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://www.instagram.com/lifeofshivankur/" target="_blank" rel="noopener">Instagram ↗</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="container">
+    <span>© 2026 SHIVANKUR GHOSH</span>
+    <span>BRAND · GROWTH · MARKETING</span>
+  </footer>
+
+</body>
+</html>
