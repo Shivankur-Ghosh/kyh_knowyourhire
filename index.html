@@ -164,10 +164,13 @@ footer{padding:25px 0;display:flex;justify-content:space-between;font:500 .65rem
 <div class="print-celebration" id="printCelebration" hidden aria-live="polite"><div class="gang-card"><span>JOB DONE.</span><strong>GANG<br>GANG!</strong><i>✳ ✦ ✳</i><button id="dismissCelebration" type="button">BACK TO IT ↗</button></div></div>
 <script>
 (() => {
- const chooser=document.getElementById('printChooser'),lfg=document.getElementById('lfgButton'),close=document.getElementById('closePrintChooser'),printWebsite=document.getElementById('printWebsite'),celebration=document.getElementById('printCelebration'),dismiss=document.getElementById('dismissCelebration');let printingWebsite=false;
+ const chooser=document.getElementById('printChooser'),lfg=document.getElementById('lfgButton'),close=document.getElementById('closePrintChooser'),cvDownload=chooser.querySelector('a[download]'),printWebsite=document.getElementById('printWebsite'),celebration=document.getElementById('printCelebration'),dismiss=document.getElementById('dismissCelebration');let printingWebsite=false;
  function closeChooser(){chooser.hidden=true;lfg.focus();}
- lfg.addEventListener('click',()=>{chooser.hidden=false;close.focus()});close.addEventListener('click',closeChooser);chooser.addEventListener('click',e=>{if(e.target===chooser)closeChooser()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!chooser.hidden)closeChooser()});
- printWebsite.addEventListener('click',()=>{printingWebsite=true;chooser.hidden=true;window.print()});window.addEventListener('afterprint',()=>{if(printingWebsite){printingWebsite=false;celebration.hidden=false}});dismiss.addEventListener('click',()=>{celebration.hidden=true});
+ function showCelebration(){celebration.hidden=false;dismiss.focus();}
+ function closeCelebration(){celebration.hidden=true;}
+ lfg.addEventListener('click',()=>{chooser.hidden=false;close.focus()});close.addEventListener('click',closeChooser);chooser.addEventListener('click',e=>{if(e.target===chooser)closeChooser()});document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!celebration.hidden){closeCelebration();e.preventDefault();}else if(!chooser.hidden){closeChooser();e.preventDefault();}}});
+ cvDownload.addEventListener('click',()=>{chooser.hidden=true;window.setTimeout(showCelebration,250);});
+ printWebsite.addEventListener('click',()=>{printingWebsite=true;chooser.hidden=true;window.print()});window.addEventListener('afterprint',()=>{if(printingWebsite){printingWebsite=false;showCelebration();}});dismiss.addEventListener('click',closeCelebration);
 })();
 </script>
 <script>
