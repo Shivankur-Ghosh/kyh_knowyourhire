@@ -190,11 +190,14 @@ footer{padding:25px 0;display:flex;justify-content:space-between;font:500 .65rem
   if (!video || !replay) return;
 
   // Start once, muted: browsers generally block autoplay with sound.
+  // Keep a clear play fallback when autoplay is blocked or the media cannot load.
+  replay.textContent = '▶ Play intro';
   const startOnce = () => {
     video.muted = true;
     const attempt = video.play();
-    if (attempt && typeof attempt.catch === 'function') {
-      attempt.catch(() => { replay.textContent = '▶ Play intro'; });
+    if (attempt && typeof attempt.then === 'function') {
+      attempt.then(() => { replay.textContent = '↻ Replay with sound'; })
+        .catch(() => { replay.textContent = '▶ Play intro'; });
     }
   };
   if (document.readyState === 'loading') {
@@ -203,7 +206,15 @@ footer{padding:25px 0;display:flex;justify-content:space-between;font:500 .65rem
     startOnce();
   }
 
-  // A click is a user gesture, so replay from the beginning with sound.
+  // Clicking the portrait/video itself opens the creator's Instagram.
+  // The dedicated replay control remains responsible for playing the video.
+  video.style.cursor = 'pointer';
+  video.setAttribute('title', 'Visit @lifeofshivankur on Instagram');
+  video.addEventListener('click', () => {
+    window.open('https://instagram.com/lifeofshivankur', '_blank', 'noopener');
+  });
+
+  // A click on the dedicated control is a user gesture, so try sound first.
   replay.addEventListener('click', async () => {
     try {
       video.pause();
@@ -216,11 +227,15 @@ footer{padding:25px 0;display:flex;justify-content:space-between;font:500 .65rem
       video.currentTime = 0;
       try {
         await video.play();
-        replay.textContent = '↻ Replay';
+        replay.textContent = '↻ Replay muted';
       } catch (_) {
         replay.textContent = '▶ Play intro';
       }
     }
+  });
+
+  video.addEventListener('error', () => {
+    replay.textContent = '▶ Play intro';
   });
 })();
 </script>
