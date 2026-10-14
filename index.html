@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Shivankur Ghosh - Senior Brand Manager building brands, growth systems and ideas." />
 <meta name="theme-color" content="#f3f1eb" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="apple-touch-icon" href="assets/favicon.png" />
 <title>Shivankur Ghosh - Brand. Growth. Systems.</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Manrope:wght@400;600;700;800&display=swap');
@@ -60,7 +62,7 @@ footer{padding:25px 0;display:flex;justify-content:space-between;font:500 .65rem
   </div>
   <div class="hero-media">
     <div class="hero-video-frame">
-      <video id="introVideo" class="hero-video" autoplay muted playsinline preload="auto" poster="assets/shivankur-whats-good-poster.jpg" aria-label="Shivankur says, What's good?">
+      <video id="introVideo" class="hero-video" playsinline preload="metadata" poster="assets/shivankur-whats-good-poster.jpg" aria-label="Shivankur says, What's good?">
         <source src="assets/shivankur-whats-good.mp4" type="video/mp4" />
         Your browser does not support the video element.
       </video>
@@ -189,22 +191,8 @@ footer{padding:25px 0;display:flex;justify-content:space-between;font:500 .65rem
   const replay = document.getElementById('replayIntro');
   if (!video || !replay) return;
 
-  // Start once, muted: browsers generally block autoplay with sound.
-  // Keep a clear play fallback when autoplay is blocked or the media cannot load.
+  // No autoplay: let visitors choose when to play the intro.
   replay.textContent = '▶ Play intro';
-  const startOnce = () => {
-    video.muted = true;
-    const attempt = video.play();
-    if (attempt && typeof attempt.then === 'function') {
-      attempt.then(() => { replay.textContent = '↻ Replay with sound'; })
-        .catch(() => { replay.textContent = '▶ Play intro'; });
-    }
-  };
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', startOnce, { once: true });
-  } else {
-    startOnce();
-  }
 
   // Clicking the portrait/video itself opens the creator's Instagram.
   // The dedicated replay control remains responsible for playing the video.
@@ -237,6 +225,22 @@ footer{padding:25px 0;display:flex;justify-content:space-between;font:500 .65rem
   video.addEventListener('error', () => {
     replay.textContent = '▶ Play intro';
   });
+})();
+</script>
+
+
+<script>
+// Lightweight inspection deterrent. This discourages casual copying but is not security.
+(() => {
+  document.addEventListener('contextmenu', event => event.preventDefault());
+  document.addEventListener('keydown', event => {
+    const key = (event.key || '').toLowerCase();
+    const devToolsShortcut = key === 'f12' ||
+      (event.ctrlKey && event.shiftKey && ['i', 'j', 'c'].includes(key)) ||
+      (event.metaKey && event.altKey && ['i', 'j', 'c'].includes(key)) ||
+      ((event.ctrlKey || event.metaKey) && key === 'u');
+    if (devToolsShortcut) { event.preventDefault(); event.stopPropagation(); }
+  }, true);
 })();
 </script>
 
